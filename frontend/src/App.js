@@ -1,11 +1,20 @@
 import { useEffect, useState } from "react"
 import jwt_decode from 'jwt-decode'
 import "./App.css"
+import movieService from './services/movies'
+
 
 const App = () => {
   const[user, setUser]=useState({})
+  const[movie, setMovie]=useState({})
 
+  //for testing purposes: avatar id tt1630029
   useEffect(()=>{
+    movieService.getById('tt1630029').then(data=>{
+      console.log(data)
+      setMovie(data)
+      console.log(movie)
+    })
     /* global google */
     google.accounts.id.initialize({
       client_id:"286684180535-7ean49spm1p6kvo97j5vb3u0na3l0csb.apps.googleusercontent.com",
@@ -16,6 +25,7 @@ const App = () => {
       { theme: "outline", size: "large"}
       )
     google.accounts.id.prompt()
+    
   }, [])
 
   function handleCallBackResponse(response){
@@ -48,7 +58,7 @@ const App = () => {
 return(
   <div id="app">
     <header id="header">
-      <h4>Flight logger</h4>
+      <h4>Movie logger</h4>
     </header>
     <div id="googleSignInDiv"></div>
     <div id="userData">
