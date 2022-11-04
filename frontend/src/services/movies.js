@@ -1,17 +1,18 @@
 import axios from "axios";
 
 const key=process.env.REACT_APP_API_KEY
-let flightIATA=`AY1`
-const baseUrl=`https://app.goflightlabs.com/flights?access_key=${key}&flight_iata=${flightIATA}`
+const baseUrl='http://localhost:3001/api/movies'
 
-
-//208fb697
 const getById=(params)=>{
     let movieId=params
     const request=axios.get(`http://www.omdbapi.com/?apikey=${key}&i=${movieId}`)
     return request.then(response=>response.data)
 }
+const getAll=()=>{
+    const request=axios.get(baseUrl)
+    return request.then(response=>response.data)
+}
 
 export default {
-    getById
+    getById, getAll
 }

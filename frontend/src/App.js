@@ -9,11 +9,17 @@ const App = () => {
   const[movie, setMovie]=useState({})
 
   //for testing purposes: avatar id tt1630029
-  useEffect(()=>{
-    movieService.getById('tt1630029').then(data=>{
+
+  /*
+  movieService.getById('tt1630029').then(data=>{
       console.log(data)
       setMovie(data)
       console.log(movie)
+    })
+  */
+  useEffect(()=>{
+    movieService.getAll().then(data=>{
+      console.log(data)
     })
     /* global google */
     google.accounts.id.initialize({
