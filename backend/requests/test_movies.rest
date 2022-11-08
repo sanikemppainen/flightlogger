@@ -1,5 +1,6 @@
 POST http://localhost:3001/api/movies
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFubmEiLCJpZCI6IjYzNmE1OWY3ZjVlNWRjYWVhMDdhNDJhZSIsImlhdCI6MTY2NzkxNTgwOX0.Q2_yDj9LlhnM1F5OQV7dfrJW1tQx3sC96WdQN-Cv1uI
 
 {
     "name": "Karate Kid",

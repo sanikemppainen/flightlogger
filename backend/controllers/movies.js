@@ -1,6 +1,16 @@
 const moviesRouter=require('express').Router()
 const Movie=require('../models/movie')
 const User = require('../models/user')
+const config=require('../utils/config')
+const jwt = require('jsonwebtoken')
+
+const getToken=request=>{
+    const auth=request.get('authorization')
+    if(auth && auth.toLowerCase().startsWith('bearer')){
+        return auth.substring(7)
+    }
+    return null
+}
 
 moviesRouter.get('/', async (request, response) => {
     const movies= await Movie
@@ -19,8 +29,13 @@ moviesRouter.get('/:id', async (request, response) => {
 })
 
 moviesRouter.post('/', async(request, response)=>{
+    const token=getToken(request)
+    const decodedToken=jwt.verify(token, config.SECRET)
+    if(!decodedToken.id){
+        return response.status(401).json({ error: 'token is missing or wrong'})
+    }
     const body=request.body
-    const user= await User.findById(body.userId)
+    const user= await User.findById(decodedToken.id)
     const movie = new Movie({
         name: body.name,
         rating: body.rating,
