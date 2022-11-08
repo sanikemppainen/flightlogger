@@ -9,6 +9,7 @@ const { request } = require('express')
 const middleware = require('./utils/middleware')
 const logger = require('./utils/logger')
 const moviesRouter=require('./controllers/movies')
+const usersRouter = require('./controllers/users')
 
 logger.info('connecting to', config.MONGODB_URI)
 const mongoose = require('mongoose')
@@ -22,6 +23,7 @@ mongoose.connect(config.MONGODB_URI)
 //we use this router if request starts like /api/movies
 app.use(middleware.requestLogger)
 app.use('/api/movies', moviesRouter)
+app.use('/api/users', usersRouter)
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)
 /*

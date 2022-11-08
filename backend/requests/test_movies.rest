@@ -2,9 +2,10 @@ POST http://localhost:3001/api/movies
 Content-Type: application/json
 
 {
-    "name": "Angel",
-    "rating": "3",
-    "seen": true
+    "name": "Karate Kid",
+    "rating": "10",
+    "seen": true,
+    "userId": "636a59f7f5e5dcaea07a42ae"
 }
 
 ###
@@ -26,4 +27,3 @@ Content-Type: application/json
     "seen": true
 }
 
-###

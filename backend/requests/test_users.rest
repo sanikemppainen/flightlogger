@@ -1,0 +1,16 @@
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+    "username": "Kaija",
+    "password": "salasana"
+}
+
+###
+
+GET http://localhost:3001/api/users/
+
+###
+
+DELETE http://localhost:3001/api/users/636a59ebf5e5dcaea07a42ab
+

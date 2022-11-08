@@ -10,6 +10,10 @@ const movieSchema = new mongoose.Schema({
     required: true
   },
   seen: Boolean,
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }
 })
 
 movieSchema.set('toJSON', {
