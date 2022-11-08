@@ -1,16 +1,16 @@
 const mongoose = require('mongoose')
 
-const url =process.env.MONGODB_URI
-
-mongoose.connect(url).then(console.log('connected to mongodb')).catch((error)=>{console.log('error connecting to mongodb: ', error.message)})
-
 const movieSchema = new mongoose.Schema({
-  name: String,
-  rating: String,
+  name: {
+    type: String,
+    required: true
+  },
+  rating: {
+    type: String,
+    required: true
+  },
   seen: Boolean,
 })
-
-const Movie = mongoose.model('Movie', movieSchema)
 
 movieSchema.set('toJSON', {
     transform: (document, returnedObject)=>{

@@ -1,0 +1,29 @@
+POST http://localhost:3001/api/movies
+Content-Type: application/json
+
+{
+    "name": "Angel",
+    "rating": "3",
+    "seen": true
+}
+
+###
+
+GET http://localhost:3001/api/movies/
+
+###
+
+DELETE http://localhost:3001/api/movies/6364f9fcbcaff513c647b326
+
+###
+
+POST http://localhost:3001/api/movies/636a3d949eb97fab192614ee
+Content-Type: application/json
+
+{
+    "name": "Transformers sequel",
+    "rating": "4",
+    "seen": true
+}
+
+###

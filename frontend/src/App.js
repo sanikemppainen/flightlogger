@@ -7,6 +7,7 @@ import movieService from './services/movies'
 const App = () => {
   const[user, setUser]=useState({})
   const[movie, setMovie]=useState({})
+  const[allMovies, setAllMovies]=useState([])
 
   //for testing purposes: avatar id tt1630029
 
@@ -20,7 +21,10 @@ const App = () => {
   useEffect(()=>{
     movieService.getAll().then(data=>{
       console.log(data)
+      setAllMovies(data)
+      console.log(allMovies[0])
     })
+
     /* global google */
     google.accounts.id.initialize({
       client_id:"286684180535-7ean49spm1p6kvo97j5vb3u0na3l0csb.apps.googleusercontent.com",
@@ -40,6 +44,7 @@ const App = () => {
     //check if user exists in database
     setUser(userObj)
     document.getElementById('googleSignInDiv').hidden=true
+    console.log(user.name)
   }
 
   function handleSignOut(event){
@@ -48,8 +53,9 @@ const App = () => {
   }
 
   const userData=()=>{
+
     return(
-      <div>
+      <div> 
          <h4>You are logged in as: {user.name}</h4>
           <p>Using email: {user.email}</p>
           <img src={user.picture} alt="profile"></img>
